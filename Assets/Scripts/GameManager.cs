@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
         score = 0;
     }
 
-    
     void Update()
     {
         int scoreSeconds = 10;
@@ -36,6 +35,7 @@ public class GameManager : MonoBehaviour
         score = (int)(timer * scoreSeconds);
 
         scoreText.text = "Score: " + score.ToString("F");
+
     }
 
     public void ShowGameOverScreen()
