@@ -4,14 +4,11 @@ public class ObstacleGenerator : MonoBehaviour
 {
      public GameObject obstacle;
 
-     public float MinSpeed;
-     public float MaxSpeed;
-     public float Speed;
-    public float SpeedMultiplier;
+    [SerializeField] ObstacleData obstacleData;
 
     void Awake()
     {
-        Speed = MinSpeed;
+        obstacleData.setSpeed();
         GenerateObstacle();
 
     }
@@ -30,9 +27,8 @@ public class ObstacleGenerator : MonoBehaviour
 
     void Update()
     {
-        if(Speed < MaxSpeed)
-        {
-            Speed += SpeedMultiplier;
-        }
+        obstacleData.multiplierSpeed();
     }
+
+    
 }

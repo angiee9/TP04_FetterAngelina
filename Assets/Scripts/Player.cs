@@ -6,7 +6,11 @@ public class Player : MonoBehaviour
     [SerializeField] private float JumpForce;
     [SerializeField] bool onGround = false;
 
+    AudioManager audioManager;
+
     private Animator playerAnimator;
+    private AudioSource jumpSound;
+    
 
     private Rigidbody2D rb;
 
@@ -14,6 +18,8 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
+        jumpSound = GetComponent<AudioSource>();
+        audioManager = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
     }
 
   
@@ -26,6 +32,7 @@ public class Player : MonoBehaviour
             if (onGround == true)
             {
                 rb.AddForce(Vector2.up * JumpForce);
+                jumpSound.Play();
                 onGround = false;
             }
         }
@@ -41,11 +48,15 @@ public class Player : MonoBehaviour
             }
         }
 
+       
+
         if (collision.gameObject.CompareTag("obstacle"))
         {
             GameManager.Instance.ShowGameOverScreen();
             playerAnimator.SetTrigger("die");
+            audioManager.PlaySFX(audioManager.death);
             Time.timeScale = 0;
+            
         }
 
     }

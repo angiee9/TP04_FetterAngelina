@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleGenerator: {fileID: 0}
+  obstacleData: {fileID: 11400000, guid: a80f28ff098acce49a85de636b8ec4c7, type: 2}
 --- !u!61 &-455446555413552003
 BoxCollider2D:
   m_ObjectHideFlags: 0
